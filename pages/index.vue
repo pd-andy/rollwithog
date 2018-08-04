@@ -55,6 +55,10 @@ export default {
     width: 100%;
   }
 
+  .video-player {
+    margin: 50px 0;
+  }
+
   .header-image > img {
     padding-top: 5%;
     padding-left: 10%;

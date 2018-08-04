@@ -1,10 +1,21 @@
 <template>
   <div class="video-container" >
-    <div class="ratio-16-9 top">
-      <video src="vid/country720.mp4" @click="togglePlay"/>
-    </div>
-    <div class="16-9 bottom">
-      <video src="vid/road720.mp4" muted @click="togglePlay"/>
+    <div 
+      class="toggle-area"
+      @mousedown.prevent="toggleOverlay"
+      @mouseup="toggleOverlay"
+      @touchstart.prevent="toggleOverlay"
+      @touchend.prevent="toggleOverlay"/>
+    <div class="ratio-16-9">
+      <video 
+        src="vid/country720.mp4" 
+        :class="`${overlay ? '' : 'top'}`"
+        @click="togglePlay"/>
+      <video 
+        src="vid/road720.mp4" 
+        :class="`${overlay ? 'top' : ''}`"
+        muted 
+        @click="togglePlay"/>
     </div>
   </div>
 </template>
@@ -22,8 +33,7 @@ export default {
   // variables
   data () {
     return {
-      dragging: false,
-      mouseX: 0,
+      overlay: false,
       playing: false,
       ready: false,
       videos: null
@@ -33,20 +43,10 @@ export default {
   // when component uses other components
   components: {},
   // methods
-  watch: {
-    ready () { console.log(this.ready) }
-  },
+  watch: {},
   methods: {
-    startDrag (e) {
-      this.dragging = true
-    },
-    stopDrag () {
-      this.dragging = false
-    },
-    mouseMoving (e) {
-      if (this.dragging) {
-        this.mouseX = (e.pageX / window.innerWidth) * 100
-      }
+    toggleOverlay () {
+      this.overlay = !this.overlay
     },
     togglePlay () {
       if (this.ready) {
@@ -77,7 +77,10 @@ export default {
           }
         })
       })
-    }).then(() => this.ready = true)
+    }).then(() => {
+      console.log('???')
+      this.ready = true
+    })
   }
 }
 </script>
@@ -89,15 +92,17 @@ export default {
     width: 100vw;
   }
 
-  .splash {
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    width: 100vw;
+  .toggle-area {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25vw;
+    height: 25vw;
+    z-index: 99;
   }
 
   .ratio-16-9 {
-    padding-bottom: 56.25%;
+    padding-bottom: calc(100vw * (546 / 1280));
     height: auto;
   }
 
@@ -108,10 +113,6 @@ export default {
     left: 0;
     width: 100%;
     height: auto;
-  }
-
-  .bottom {
-    z-index: 1;
   }
 
   .top {
