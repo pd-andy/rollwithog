@@ -8,10 +8,12 @@
       @touchend.prevent="toggleOverlay"/>
     <div class="ratio-16-9">
       <video 
+        playsinline
         src="vid/country720.mp4" 
         :class="`${overlay ? '' : 'top'}`"
         @click="togglePlay"/>
       <video 
+        playsinline
         src="vid/road720.mp4" 
         :class="`${overlay ? 'top' : ''}`"
         muted 
