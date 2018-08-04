@@ -1,3 +1,10 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/<repository-name>/'
+  }
+} : {}
+
+
 module.exports = {
   head: {
     title: 'rollwithog',
@@ -11,6 +18,7 @@ module.exports = {
     ]
   },
   loading: { color: '#3B8070' },
+  ...routerBase
   build: {
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
