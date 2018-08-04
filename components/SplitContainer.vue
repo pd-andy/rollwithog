@@ -1,10 +1,10 @@
 <template>
   <div class="video-container" >
     <div class="ratio-16-9 top">
-      <video src="/vid/country720.mp4" @click="togglePlay"/>
+      <video src="vid/country720.mp4" @click="togglePlay"/>
     </div>
     <div class="16-9 bottom">
-      <video src="/vid/road720.mp4" muted @click="togglePlay"/>
+      <video src="vid/road720.mp4" muted @click="togglePlay"/>
     </div>
   </div>
 </template>

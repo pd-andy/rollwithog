@@ -1,15 +1,15 @@
 <template>
   <main class="container">
     <div class="header-image">
-      <img src="/img/title.png">
+      <img src="img/title.png">
     </div>
     <split-container class="video-player"/>
     <div class="social-media">
-      <img src="/img/ig.png">
-      <img src="/img/fb.png">
-      <img src="/img/twitter.png">
-      <img src="/img/apple.png">
-      <img src="/img/spotify.png">
+      <img src="img/ig.png">
+      <img src="img/fb.png">
+      <img src="img/twitter.png">
+      <img src="img/apple.png">
+      <img src="img/spotify.png">
     </div>
   </main>
 </template>
