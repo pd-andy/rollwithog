@@ -5,11 +5,21 @@
     </div>
     <split-container class="video-player"/>
     <div class="social-media">
-      <img src="img/ig.png">
-      <img src="img/fb.png">
-      <img src="img/twitter.png">
-      <img src="img/apple.png">
-      <img src="img/spotify.png">
+      <a href="https://www.instagram.com/danieltripleog" target="_blank">
+        <img src="img/ig.png">
+      </a>
+      <a href="https://www.facebook.com/DanielTripleOG" target="_blank">
+        <img src="img/fb.png">
+      </a>
+      <a href="https://twitter.com/danieltripleog" target="_blank">
+        <img src="img/twitter.png">
+      </a>
+      <a href="https://itunes.apple.com/gb/album/roll-the-dice/1406356303?i=1406356306&app=music&ign-mpt=uo%3D4" target="_blank">
+        <img src="img/apple.png">
+      </a>
+      <a href="https://open.spotify.com/track/5KK5eenMy6rVPEEFJAOH1F" target="_blank">
+        <img src="img/spotify.png">
+      </a>
     </div>
   </main>
 </template>
@@ -76,7 +86,7 @@ export default {
     width: 100%;
   }
 
-  .social-media > img {
+  .social-media img {
     width: 24px;
     height: 24px;
   }
