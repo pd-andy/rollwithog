@@ -1,23 +1,17 @@
 <template>
   <div class="video-container" >
-    <div 
-      class="toggle-area"
-      @mousedown.prevent="toggleOverlay"
-      @mouseup="toggleOverlay"
-      @touchstart.prevent="toggleOverlay"
-      @touchend.prevent="toggleOverlay"/>
+    <div class="toggle-area" @mousedown.prevent="toggleOverlay" @mouseup="toggleOverlay" @touchstart.prevent="toggleOverlay" @touchend.prevent="toggleOverlay"/>
     <div class="ratio-16-9">
-      <video 
-        playsinline
-        src="vid/country720.mp4" 
-        :class="`${overlay ? '' : 'top'}`"
-        @click="togglePlay"/>
-      <video 
-        playsinline
-        src="vid/road720.mp4" 
-        :class="`${overlay ? 'top' : ''}`"
-        muted 
-        @click="togglePlay"/>
+      <video playsinline :class="`${overlay ? '' : 'top'}`" @click="togglePlay">
+        <source type="video/mp4" src="vid/country.mp4"/>
+        <source type="video/webm" src="vid/country.webm"/>
+        <source type="video/ogg" src="vid/country.ogv"/>
+      </video>
+      <video playsinline :class="`${overlay ? 'top' : ''}`" muted @click="togglePlay">
+        <source type="video/mp4" src="vid/road.mp4"/>
+        <source type="video/webm" src="vid/road.webm"/>
+        <source type="video/ogg" src="vid/road.ogv"/>
+      </video>
     </div>
   </div>
 </template>
@@ -45,7 +39,11 @@ export default {
   // when component uses other components
   components: {},
   // methods
-  watch: {},
+  watch: {
+    ready () {
+      if (this.ready) this.$emit('ready')
+    }
+  },
   methods: {
     toggleOverlay () {
       this.overlay = !this.overlay
@@ -80,7 +78,6 @@ export default {
         })
       })
     }).then(() => {
-      console.log('???')
       this.ready = true
     })
   }

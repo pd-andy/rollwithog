@@ -3,7 +3,12 @@
     <div class="header-image">
       <img src="img/title.png">
     </div>
-    <split-container class="video-player"/>
+    <div class="video-player">
+      <div class="loading-spinner" v-show="loading">
+        <loader/>
+      </div>
+      <split-container @ready="loading = false"/>
+    </div>
     <div class="social-media">
       <a href="https://www.instagram.com/danieltripleog" target="_blank">
         <img src="img/ig.png">
@@ -25,6 +30,7 @@
 </template>
 
 <script>
+import Loader from '~/components/Loader'
 import SplitContainer from '~/components/SplitContainer'
 
 export default {
@@ -39,13 +45,14 @@ export default {
   // variables
   data () {
     return {
-
+      loading: true
     }
   },
   computed: {},
   // when component uses other components
   components: {
-    SplitContainer
+    SplitContainer,
+    Loader
   },
   // methods
   watch: {},
@@ -63,6 +70,14 @@ export default {
 
   .header-image {
     width: 100%;
+  }
+
+  .loading-spinner {
+    position: absolute;
+    margin: auto;
+    left: calc(50% - 55px);
+    height: 100px;
+    z-index: 99;
   }
 
   .video-player {
