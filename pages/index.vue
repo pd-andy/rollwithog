@@ -4,10 +4,7 @@
       <img src="img/title.png">
     </div>
     <div class="video-player">
-      <div class="loading-spinner" v-show="loading">
-        <loader/>
-      </div>
-      <split-container @ready="loading = false"/>
+      <split-container/>
     </div>
     <div class="social-media">
       <a href="https://www.instagram.com/danieltripleog" target="_blank">

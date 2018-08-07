@@ -1,5 +1,8 @@
 <template>
   <div class="video-container" >
+    <div class="loading-spinner" v-show="!ready">
+        <loader/>
+      </div>
     <div class="toggle-area" @mousedown.prevent="toggleOverlay" @mouseup="toggleOverlay" @touchstart.prevent="toggleOverlay" @touchend.prevent="toggleOverlay"/>
     <div class="ratio-16-9">
       <video playsinline :class="`${overlay ? '' : 'top'}`" @click="togglePlay" poster="./img/splash.png">
@@ -40,10 +43,7 @@ export default {
   components: {},
   // methods
   watch: {
-    ready () {
-      if (this.ready) this.$emit('ready')
-      console.log(this.ready)
-    }
+    ready () {}
   },
   methods: {
     toggleOverlay () {
