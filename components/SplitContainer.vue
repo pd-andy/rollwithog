@@ -81,6 +81,9 @@ export default {
     }).then(() => {
       this.ready = true
     })
+
+    if(videos[0].readyState && videos[1].readyState)
+      this.ready = true
   }
 }
 </script>
