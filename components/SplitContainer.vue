@@ -2,7 +2,7 @@
   <div class="video-container" >
     <div class="toggle-area" @mousedown.prevent="toggleOverlay" @mouseup="toggleOverlay" @touchstart.prevent="toggleOverlay" @touchend.prevent="toggleOverlay"/>
     <div class="ratio-16-9">
-      <video playsinline :class="`${overlay ? '' : 'top'}`" @click="togglePlay">
+      <video playsinline :class="`${overlay ? '' : 'top'}`" @click="togglePlay" placeholder="/img/splash.png">
         <source type="video/mp4" src="vid/country.mp4"/>
         <source type="video/webm" src="vid/country.webm"/>
         <source type="video/ogg" src="vid/country.ogv"/>
@@ -42,6 +42,7 @@ export default {
   watch: {
     ready () {
       if (this.ready) this.$emit('ready')
+      console.log(this.ready)
     }
   },
   methods: {
